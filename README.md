@@ -1,6 +1,6 @@
 # Multitask Learning with Stochastic Interpolants
 
-It is the source code of the website located [here](https://roomate.github.io/MTLSI.github.io/). This website presents this [paper](https://roomate.github.io/MTLSI.github.io/), published at NeurIPS 2025 as a spotlight.
+It is the source code of the website located [here](https://multitaskstochasticinterpolant.github.io). This website presents this [paper](https://roomate.github.io/MTLSI.github.io/), published at NeurIPS 2025 as a spotlight.
 
 If you find Multitask Learning with Stochastic Interpolants useful for your work, please cite:
 ```

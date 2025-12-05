@@ -202,8 +202,7 @@
                     <h2 class="title is-3">Key Contributions</h2>
                     <div class="content has-text-justified">
                         <p>
-                            <b>Generalized stochastic interpolants:</b> We replace the scalar time with linear operators
-                            to
+                            <b>Generalized stochastic interpolants:</b> We replace scalar time with linear operators to
                             interpolate between distributions across dimensions. This points toward a more general
                             paradigm of universal generative models that can be trained once and then applied to a
                             variety of objectives.
@@ -598,61 +597,139 @@
         <!-- Posterior sampling. -->
     </section>
 
-    <hr style="border:1px solid black; background: black; border: none; margin-left: 350px; margin-right: 350px">
-    <div class="columns is-centered">
+    <!-- <hr style="border:1px solid black; background: black; border: none; margin-left: 350px; margin-right: 350px"> -->
+    <!-- <div class="columns is-centered">
         <div class="column is-four-fifths">
             <h1 class="title is-2 has-text-centered"> Theoretical Framework</h1>
             <p>
-            <p style="background-color: #f0f8ff; padding: 1em; border-left: 4px solid #2970CC; margin: 1em 0;">
-                <b>New operator interpolant</b>
+                Interpolation involves two multivariates random variables $x_0$ $\perp$ $x_1$ and a
+                parametrization by two scalars $\alpha$ and $\beta$ via the
+                very simple relation $I_{\alpha, \beta}(x_0,x_1) = \alpha x_0 + \beta x_1$, where $x_0 \sim
+                \rho_0$, $x_1 \sim \rho_1$, and $\alpha, \beta \in [0, 1]$. $\rho_0$ and $\rho_1$ are
+                respectively noise and data distributions, living in $\mathbb{R}^n$. Most usual case is
+                $\alpha=\alpha(t) \equiv 1-t$, $\beta=\beta(t)=1-\alpha(t)\equiv t$. Interpolants can be formulated as
+                flow matching, whose drift $(v_\alpha)_{\alpha \in [0, 1]}$ is learned with the Flow matching loss.
+                By their nature of scalar parameters, they acts uniformally on every entries, letting little
+                flexibility in generation.
                 <br>
+                Now, define $I_{\alpha, \beta}(x_0, x_1) = \alpha x_0 + \beta x_1$ with operator
+                $\alpha$ and $\beta\equiv 1-\alpha$. It is a significant paradigm shift, as samples are now transported
+                between codomain of operators $\alpha$ and $\beta$. To perform generation, you give yourself a sequence
+                of operator $(\alpha_t)_{t \in [0, 1]}$, and solve:
+            <p style="background-color: #f0f8ff; padding: 1em; border-left: 4px solid #2970CC; margin: 1em 0;">
+                <b>Sampling via ODE resolution</b>
+                <br>
+                Sampling $x_1 \sim \rho_1$ by solving the ODE:
                 $$
                 \begin{align*}
-                I_{\alpha,\beta} = \alpha x_0 + \beta x_1,
+                \dot x_t&=v(x_t), \\
+                x(0)&=x_0 \sim \rho_0,
                 \end{align*}
                 $$
-                where $x_0 \sim$ noise, $x_1\sim$ data distribution and $\alpha,\beta$ are linear operator.
+                and let $x_1=x(1)$.
+                $v(x_t)=\mathbb{E}[\dot \alpha_t x_0 + \dot \beta_t x_1 | \alpha_t x_0 + \beta_t x_1=x_t]$ is the
+                generator vector field.
             </p>
 
-            Associated with this interpolant we introduce:
+            In the multitask framework, Flow matching amounts to take $\alpha=(1-t) \text{Id}$ and $\beta=t
+            \text{Id}$.
             </p>
+            To learn the generator field $v$, one uses the loss:
             <p style="background-color: #f0f8ff; padding: 1em; border-left: 4px solid #2970CC; margin: 1em 0;">
-                <b>Denoiser drifts:</b>
+                <b>Vanilla Flow matching loss:</b>
                 <br>
                 $$
                 \begin{align*}
-                \eta_0(\alpha,\beta,x) = \mathop{\mathrm{arg min}}_{\hat \eta_0}
-                \mathbb{E}_{x_0,x_1,\alpha,\beta}\big[|\hat \eta_0(\alpha,\beta,I_{\alpha,\beta})- x_0|^2\big], \\
-                \eta_1(\alpha,\beta,x) = \mathop{\mathrm{arg min}}_{\hat \eta_1}
-                \mathbb{E}_{x_0,x_1,\alpha,\beta}\big[|\hat \eta_1(\alpha,\beta,I_{\alpha,\beta})- x_1|^2]
+                \mathcal{L}_{FM}(\hat v)&=\mathbb{E}_{x_0 \sim \rho_0, x_1 \sim \rho_1, t \in
+                \mathcal{U}([0,
+                1])}[||\dot{\alpha}_t x_0 + \dot{\beta}_tx_1 - \hat v_t(\alpha_t x_0 + \beta_t x_1)||^2] \\
+                &= \mathbb{E}_{x_0 \sim \rho_0, x_1 \sim \rho_1, t \in
+                \mathcal{U}([0,1])}[||x_1-x_0 - \hat v_t((1-t)x_0 + tx_1)||^2]
                 \end{align*}
                 $$
+                <b>Multitask Stochastic Interpolants Loss:</b>
+                <br><br>
+                $$
+                \mathcal{L}_{MTSI}(\hat v)=\mathbb{E}_{x_0 \sim \rho_0, x_1 \sim \rho_1, t \in
+                \mathcal{U}([0,1])}[||\dot{\alpha}_t x_0 + (1-\dot{\alpha}_t) x_1 - \hat v_t(\alpha_t x_0 +
+                (1-\alpha_t) x_1)||^2]
+                $$
             </p>
+            <h2 class="title is-4">Inpainting</h2>
             <p>
-                These drifts can be used to perform inference along any path in $(\alpha,\beta)$-space using:
+                Inpainting task can naturally be formulated with operators if one take $\alpha$ as a masking operator;
+                that is $\alpha x= \alpha \odot x$, keeping the notation $\alpha$ for brevity. With this representation,
+                $\alpha$ becomes a vector in $\mathbb{R}^n$.
+                Pixel-wise inpainting becomes a trivial task by parameterized it with a
+                vector time $t \in [0, 1]^n$. For example, if $\alpha \equiv 1-t$, you can:
+            </p>
+            <ul>
+                <li>Generate entry $i \in \llbracket 1, n\rrbracket$ by letting $t_i$ go from $0$ to $1$ when solving
+                    the ODE.</li>
+                <li>Keep entry $j$ fixed by imposing $t_j=1$ during all the generation process.</li>
+            </ul>
+            <br>
+            <h2 class="title is-4">Posterior sampling</h2>
+            Consider the situation where $\rho_1$ is a prior, and let $r(x)=\langle Ax, x \rangle + \langle b, x\rangle$
+            a log-likelihood, where $A \in \mathbb{S}_-(\mathbb{R}^n)$. The posterior then takes the natural form:
+            $\rho_1^r\propto \rho_1 e^{r}$ and an
+            interpolant is: $I^r_\alpha(x_0, x_1^r)=\alpha \odot x_0 + (1 - \alpha) \odot x_1^r$, with $x_0 \perp x_1^r$
+            and $x_0 \sim N(0, \text{Id})$, $x_1^r \sim \rho_1^r$.
+            <p style="background-color: #f0f8ff; padding: 1em; border-left: 4px solid #2970CC; margin: 1em 0;">
+                <b>Theorem:</b>
+                <br><br>
+                Let
+                $$
+                \eta_0(\alpha,\beta,x) = \mathbb{E}\big[x_0| I(\alpha,\beta) = x\big], \qquad \eta_1(\alpha,\beta,x) =
+                \mathbb{E}\big[x_1| I(\alpha,\beta) = x\big],
+                $$
+                be the drifts associated with the interpolant and
+                $$
+                \eta^r_0(\alpha,\beta,x) = \mathbb{E}\big[x_0| I_r(\alpha,\beta) = x\big], \qquad
+                \eta^r_1(\alpha,\beta,x) =
+                \mathbb{E}\big[x_1^r| I_r(\alpha,\beta) = x\big],
+                $$
+                be the drifts associated with the interpolant. If $\alpha$ and $\beta$ are
+                invertible, then
+                $$
+                \eta^r_0(\alpha,\beta,x) = \alpha^{-1} \beta \beta_r^{-1} \alpha_r \eta_0(\alpha_r,\beta_r,x_r) +
+                \alpha^{-1} (x - \beta \beta_r^{-1} x_r), \quad
+                \eta^r_1(\alpha,\beta,x) =\eta_1(\alpha_r,\beta_r,x_r)
+                $$
+                as long as we can find a pair $(\alpha_r,\beta_r)$ that satisfies
+                $$
+                \beta_r^T \alpha_r^{-T} \alpha^{-1}_r \beta_r = \beta^T\alpha^{-T}\alpha^{-1} \beta - A,
+                $$
+                and $x_r$ is given by
+                $$
+                x_r = \alpha_r \alpha_r^T \beta_r^{-T}\left( \beta^T \alpha^{-T} \alpha^{-1} x + b\right).
+                $$
             </p>
             <p style="background-color: #f0f8ff; padding: 1em; border-left: 4px solid #2970CC; margin: 1em 0;">
-                <b>Probability flow ODE</b>
+                <b>Theorem [Posterior drift]:</b>
                 <br>
+                Assume $\beta = 1 - \alpha$ with $\alpha$ diagonal and invertible, and let
                 $$
-                \begin{align*}
-                \dot x_t = \dot \alpha_t \eta_0(\alpha_t,\beta_t,x_t) + \dot \beta_t \eta_1(\alpha_t,\beta_t,x_t),
-                \qquad x_0 \overset{d}{=} I_{\alpha_0,\beta_0}
-                \end{align*}
+                \eta^r(\alpha,x) = \mathbb{E}\big[x_0-x_1|\alpha x_0 + (1-\alpha) x_1^r = x \big] = \eta_0^r(\alpha,
+                1-\alpha,
+                x) - \eta_1^r(\alpha, 1-\alpha, x)
                 $$
-                <b>SDE (for Gaussian $x_0$</b>
-                <br>
+                where the drifts $\eta_0^r$ and $\eta_1^r$ are defined above and
+                , respectively. Assume also that $A$ is diagonal, non-positive definite, and
+                invertible. Then, $\beta_r = 1 -\alpha_r$ and $\eta^r$ can be expressed as:
                 $$
-                \begin{align*}
-                dx_t = (\dot \alpha_t -\sigma_t^2 \alpha_t)^{-1}\eta_0(\alpha_t,\beta_t,x_t) dt + \dot \beta_t
-                \eta_1(\alpha_t,\beta_t,x_t) dt + \sqrt{2} \sigma_t dW_t, \qquad x_0 \overset{d}{=}
-                I_{\alpha_0,\beta_0}\end{align*}
+                \eta^r(\alpha, x) = \alpha^{-1}\alpha_r\eta(\alpha_r, x_r) + \alpha^{-1}(x - x^r),
+                $$
+                where $\eta(\alpha, x)$ is the drift of the prior, and $\alpha_r$ and $x_r$ are given by
+                $$
+                \alpha_r = \alpha\frac{ \sqrt{1 - 2\alpha + \alpha^2(1 - A)} -\alpha }{1 - 2\alpha - \alpha^2A}
+                $$
+                $$
+                x_r = \frac{\alpha_r^2(1-\alpha)}{\alpha^2 (1-\alpha_r)} \, x + \frac{\alpha_r^2}{(1-\alpha)}\, b.
                 $$
             </p>
-            </p>
-            <br>
         </div>
-    </div>
+    </div> -->
 
     <section class=" section" id="BibTeX">
         <div class="columns is-centered">

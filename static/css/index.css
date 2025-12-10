@@ -38,20 +38,24 @@
 /* Fix pour l'alignement horizontal des images/vidéos */
 
 .imgContainer {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   vertical-align: top;
+  min-height: 5px;
   /* Crucial : aligne le haut des conteneurs */
   text-align: center;
   margin: 0 10px;
 }
 
-.imgContainer img,
+/* .imgContainer img,
 .imgContainer video {
   display: block !important;
   height: auto !important;
   max-width: 100% !important;
   margin: 0 auto !important;
-}
+  margin-top: auto !important;
+} */
 
 .imgContainer p {
   /* Hauteur minimale fixe pour éviter le décalage */

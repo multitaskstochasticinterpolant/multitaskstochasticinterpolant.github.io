@@ -1,7 +1,7 @@
 .arrow-container {
   text-align: center;
   /* Centre le texte et la flèche */
-  margin-top: 2rem;
+  margin-top: 1rem;
   /* Espacement au-dessus de la flèche */
 }
 
@@ -32,6 +32,71 @@
   border-color: transparent transparent transparent black;
   /* Couleurs du triangle */
 }
+
+/*========================================================================================================*/
+
+/* Fix pour l'alignement horizontal des images/vidéos */
+
+.imgContainer {
+  display: inline-block;
+  vertical-align: top;
+  /* Crucial : aligne le haut des conteneurs */
+  text-align: center;
+  margin: 0 10px;
+}
+
+.imgContainer img,
+.imgContainer video {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto !important;
+}
+
+.imgContainer p {
+  /* Hauteur minimale fixe pour éviter le décalage */
+  min-height: 3em;
+  /* Assez pour 2 lignes */
+  margin-top: .5em;
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: 0.9em;
+
+  /* Optionnel : centre le texte verticalement */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .imgContainer {
+    width: 45%;
+    /* 2 images par ligne sur mobile */
+    margin: 5px;
+  }
+
+  .imgContainer img,
+  .imgContainer video {
+    width: 100%;
+  }
+
+  .imgContainer p {
+    font-size: 0.8em;
+    min-height: 3.5em;
+    /* Un peu plus sur mobile car le texte wrap plus */
+  }
+}
+
+@media (max-width: 480px) {
+  .imgContainer {
+    width: 100%;
+    /* 1 image par ligne sur très petit écran */
+    margin: 10px auto;
+  }
+}
+
+/*========================================================================================================*/
 
 body {
   color: #555;

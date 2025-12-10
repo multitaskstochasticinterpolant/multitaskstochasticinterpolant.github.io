@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="description"
         content="All-At-Once generative modeling in operator space with Stochastic Interpolants, for posterior sampling and inverse problems.">
-    <meta name="keywords" content="Stochastic Interpolants, Generative modeling, Posterior Sampling">
+    <meta name="keywords"
+        content="Stochastic Interpolants, Generative modeling, Posterior Sampling, Multitask learning">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -240,7 +241,7 @@
             </div>
         </div>
 
-        <hr style="border:1px solid black; background: black; border: none; margin-left: 350px; margin-right: 350px">
+        <hr style="border:1px solid black; background: black; border: none; margin-left: 27%; margin-right: 27%">
 
         <!-- Inpainting. -->
         <div class="columns is-centered">
@@ -257,8 +258,8 @@
                 <div class="container has-text-centered">
                     <div class="imgContainer" , display: flex;>
                         <img src="static/images/0089.png" height="52%" width="52%" ,
-                            style="position: relative; transform: translateY(12px);">
-                        <p style="margin: 22px 0px 0px 0px;">Original image</p>
+                            style="position: relative; transform: translateY(12%);">
+                        <p style="margin: 9% 0px 0px 0px;">Original image</p>
                     </div>
 
                     <div class="imgContainer">
@@ -275,13 +276,13 @@
                     </div>
                 </div>
                 <hr
-                    style="border:1px solid black; background: black; border: none; margin-left: 380px; margin-right: 380px;">
+                    style="border:1px solid black; background: black; border: none; margin-left: 40%; margin-right: 40%;;">
                 <div class="has-text-centered"><b>Dataset: CelebA</b></div>
-                <div class="container has-text-centered" , style="margin-bottom: 20px">
+                <div class="container has-text-centered" , style="margin-bottom: 5%">
                     <div class="imgContainer">
                         <img src="static/images/000034.jpg" height="50%" width="50%" ,
-                            style="position: relative; transform: translateY(12px);">
-                        <p style="margin: 22px 0px 0px 0px;">Original image</p>
+                            style="position: relative; transform: translateY(12%);">
+                        <p style="margin: 9% 0px 0px 0px;">Original image</p>
                     </div>
 
                     <div class="imgContainer">
@@ -300,8 +301,8 @@
                 <!--/Inpainting. -->
             </div>
         </div>
-        <div class="columns is-centered is-max-desktop has-text-centered" style="margin-bottom: 20px">
-            <div class="imgContainer column is-four-fifths" style="justify-content: center">
+        <div class="columns is-centered is-max-desktop has-text-centered" style="margin-bottom: 5%">
+            <div class="column is-four-fifths" style="justify-content: center">
                 <p>PSNR and SSIM metrics on CelebA and AFHQ-Cat datasets. A single generation was performed on each
                     image.</p>
                 <table class="table" , style="width: 100%; text-align: center;">
@@ -406,73 +407,73 @@
         </div>
         <div class="columns is-centered">
             <div class=" column is-four-fifths">
-                <p class="has-text-justified"> generations in a row on the
+                <p class="has-text-justified"> Multiple generations in a row on the
                     same image without significantly deviating from the original image, see below. The eyes and
                     mouth
                     are masked then generated in turn.
                 </p>
-                <div class="container has-text-centered" , style="margin: 0px 0px 0 0px">
+                <div class="container has-text-centered">
                     <div class="imgContainer">
                         <img src="static/images/original_cat.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px; position: relative; transform: translateY(12px);">
-                        <p style="margin: 5px 0px 0px 0px;">Original image</p>
+                            style="margin-top: 30%; position: relative; transform: translateY(0%);">
+                        <p style="margin-top: 5%;">Original image</p>
                     </div>
                     <div class="imgContainer">
                         <img src="static/images/cat_eyes_masked.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px; position: relative; transform: translateY(12px);">
-                        <p style="margin: 5px 0px 0px 0px;">Masked eyes</p>
+                            style="margin-top: 30%; position: relative; transform: translateY(0%);">
+                        <p style="margin-top: 5%;">Masked eyes</p>
                     </div>
                     <div class="imgContainer">
                         <img src="static/images/cat_eyes_generated.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px; position: relative; transform: translateY(12px);">
-                        <p style="margin: 5px 0px 0px 0px;">Generated eyes</p>
+                            style="margin-top: 30%; position: relative; transform: translateY(0%);">
+                        <p style="margin-top: 5%;">Generated eyes</p>
                     </div>
-                    <div class="imgContainer" , style="position: relative; transform: translateY(18px);">
+                    <div class="imgContainer" , style="position: relative; transform: translateY(4%);">
                         <img src="static/images/cat_mouth_masked.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px;">
-                        <p style="margin: -5px 0px 0px 0px;">Generated eyes <br> Masked mouth</p>
+                            style="margin-top: 30%;">
+                        <p style="margin-top: 5%;">Generated eyes <br> Masked mouth</p>
                     </div>
-                    <div class="imgContainer" , style="position: relative; transform: translateY(18px);">
+                    <div class="imgContainer" , style="position: relative; transform: translateY(4%);">
                         <img src="static/images/cat_mouth_generated.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px;">
-                        <p style="margin: -5px 0px 0px 0px;">Generated eyes <br> Generated mouth</p>
+                            style="margin-top: 30%;">
+                        <p style="margin-top: 5%;">Generated eyes <br> Generated mouth</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="columns is-centered">
             <div class=" column is-four-fifths">
-                <div class="container has-text-centered" , style="margin: 0px 0px 0px 0px">
+                <div class="container has-text-centered">
                     <div class="imgContainer">
                         <img src="static/images/000034.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px; position: relative; transform: translateY(12px);">
-                        <p style="margin: 5px 0px 0px 0px;">Original image</p>
+                            style="margin-top: 30%; position: relative; transform: translateY(0%);">
+                        <p style="margin-top: 5%;">Original image</p>
                     </div>
                     <div class="imgContainer">
                         <img src="static/images/girl_eye_masked.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px; position: relative; transform: translateY(12px);">
-                        <p style="margin: 5px 0px 0px 0px;">Masked eyes</p>
+                            style="margin-top: 30%; position: relative; transform: translateY(0%);">
+                        <p style="margin-top: 5%;">Masked eyes</p>
                     </div>
                     <div class="imgContainer">
                         <img src="static/images/girl_eye_generated.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px; position: relative; transform: translateY(12px);">
-                        <p style="margin: 5px 0px 0px 0px;">Generated eyes</p>
+                            style="margin-top: 30%; position: relative; transform: translateY(0%);">
+                        <p style="margin-top: 5%;">Generated eyes</p>
                     </div>
-                    <div class="imgContainer" , style="position: relative; transform: translateY(18px);">
+                    <div class="imgContainer" , style="position: relative; transform: translateY(4%);">
                         <img src="static/images/girl_mouth_masked.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px;">
-                        <p style="margin: -5px 0px 0px 0px;">Generated eyes <br> Masked mouth</p>
+                            style="margin-top: 30%;">
+                        <p style="margin-top: 5%;">Generated eyes <br> Masked mouth</p>
                     </div>
-                    <div class="imgContainer" , style="position: relative; transform: translateY(18px);">
+                    <div class="imgContainer" , style="position: relative; transform: translateY(4%);">
                         <img src="static/images/girl_mouth_generated.jpg" height="84%" width="84%" ,
-                            style="margin: 30px 0px 0px 0px;">
-                        <p style="margin: -5px 0px 0px 0px;">Generated eyes <br> Generated mouth</p>
+                            style="margin-top: 30%;">
+                        <p style="margin-top: 5%;">Generated eyes <br> Generated mouth</p>
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="arrow-container" , style="margin-bottom: 40px">
+        <div class="arrow-container" , style="margin-bottom: 5%">
             <div class="arrow"></div>
             <div class="text">Generation flow</div>
         </div>
@@ -526,7 +527,7 @@
                     </div>
                 </div>
                 <hr
-                    style="border:1px solid black; background: black; border: none; margin-left: 350px; margin-right: 350px; margin-bottom:-10px; margin-top: -10px;">
+                    style="border:1px solid black; background: black; border: none; margin-left: 40%; margin-right: 40%; margin-bottom:-1%; margin-top: -1%;">
 
                 <div class="columns">
                     <div class="imgContainer has-text-centered">
@@ -573,27 +574,27 @@
                     \sum\limits_{a} \varphi(a)$ for $h = 0$ and $h \ne 0$ with a single model.
                 </p>
                 <div class="has-text-centered"><b>Model: $\varphi^4$</b></div>
-                <div class="container" , style="margin-bottom:25px">
+                <div class="container" , style="margin-bottom:5%">
 
                     <div class="imgContainer">
                         <img src="static/images/phi4-post-1.png" height="80%" width="80%" style="float:left">
                     </div>
                 </div>
                 <hr
-                    style="border:1px solid black; background: black; border: none; margin-left: 350px; margin-right: 350px; margin-bottom:-10px; margin-top: -10px;">
+                    style="border:1px solid black; background: black; border: none; margin-left: 40%; margin-right: 40%; margin-bottom:-1%; margin-top: -1%;">
 
-                <div class="container has-text-centered" , style="margin-top: 15px">
+                <div class="container has-text-centered" , style="margin-top: 2%">
                     <div class="imgContainer">
                         <img src="static/images/original.jpg" height="23.5%" width="23.5%" ,
-                            style="position: relative; top: 50%; transform: translateY(12px);">
-                        <p style="margin: 13px 0px 0px 0px;">Original image</p>
+                            style="position: relative; top: 50%; transform: translateY(18%);">
+                        <p style="margin-top: 5%;">Original image</p>
                     </div>
                     <div class="imgContainer">
                         <video poster="" id="steve" autoplay controls muted loop playsinline height="50%" width="50%"
-                            style="position: relative; right: 180px; transform: translateY(5px)">
+                            style="position: relative; right: 180px; transform: translateY(12%)">
                             <source src="static/videos/phi4.mp4" type="video/mp4">
                         </video>
-                        <p style="position: relative; right: 180px;">Block masking</p>
+                        <p style="position: relative; right: 60%; margin-top: 5%">Block masking</p>
                     </div>
                 </div>
             </div>
@@ -601,7 +602,7 @@
         <!-- Posterior sampling. -->
     </section>
 
-    <hr style="border:1px solid black; background: black; border: none; margin-left: 350px; margin-right: 350px">
+    <hr style="border:1px solid black; background: black; border: none; margin-left: 27%; margin-right: 27%">
     <div class="columns is-centered">
         <div class="column is-four-fifths">
             <h1 class="title is-2 has-text-centered"> Theoretical Framework</h1>
@@ -619,7 +620,7 @@
 
             Associated with this interpolant we introduce:
             </p>
-            <p style="background-color: #f0f8ff; padding: 1em; border-left: 4px solid #2970CC; margin: 1em 0;">
+            <p style="background-color: #f0f8ff; padding: 1em; border-left: 4% solid #2970CC; margin: 1em 0;">
                 <b>Denoiser drifts:</b>
                 <br>
                 $$
@@ -634,7 +635,7 @@
             <p>
                 These drifts can be used to perform inference along any path in $(\alpha,\beta)$-space using:
             </p>
-            <p style="background-color: #f0f8ff; padding: 1em; border-left: 4px solid #2970CC; margin: 1em 0;">
+            <p style="background-color: #f0f8ff; padding: 1em; border-left: 4% solid #2970CC; margin: 1em 0;">
                 <b>Probability flow ODE</b>
                 <br>
                 $$

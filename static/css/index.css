@@ -58,13 +58,14 @@ body {
 }
 
 .imgContainer {
+  max-width: 100%;
+  height: auto;
   float: left;
 }
 
 hr {
   border: 1px solid black;
 }
-
 
 .container {
   display: flex;
@@ -77,14 +78,12 @@ hr {
   /* Centrer le conteneur */
 }
 
-
 .container video {
   margin: 10px;
   /* Espacement entre les vidéos */
   max-width: 100%;
   /* S'adapter à l'écran */
 }
-
 
 .footer .icon-link {
   font-size: 25px;

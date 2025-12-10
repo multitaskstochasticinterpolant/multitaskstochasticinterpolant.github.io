@@ -1,14 +1,14 @@
 .arrow-container {
   text-align: center;
   /* Centre le texte et la flèche */
-  margin-top: 20px;
+  margin-top: 2rem;
   /* Espacement au-dessus de la flèche */
 }
 
 .arrow {
-  width: 800px;
+  width: 40rem;
   /* Longueur de la flèche */
-  height: 2px;
+  height: .2rem;
   /* Épaisseur de la flèche */
   background-color: black;
   /* Couleur de la flèche */
@@ -21,35 +21,16 @@
 .arrow:after {
   content: '';
   position: absolute;
-  top: -9px;
+  top: -.55rem;
   /* Ajustement vertical pour le triangle */
-  right: -11px;
+  right: -1rem;
   /* Ajustement horizontal pour le triangle */
-  border-width: 10px;
+  border-width: .65rem;
   /* Taille de la pointe de la flèche */
   border-style: solid;
   /* Type de bord */
   border-color: transparent transparent transparent black;
   /* Couleurs du triangle */
-}
-
-ul {
-  list-style-type: disc;
-  /* Default bullet style */
-  padding-left: 20px;
-  /* Add some padding to indent */
-}
-
-
-</style>.container {
-  display: flex;
-  /* Utiliser flexbox pour aligner l'image et les vidéos */
-  align-items: center;
-  /* Aligner verticalement au centre */
-  max-width: 1000px;
-  /* Largeur maximale du conteneur */
-  margin: auto;
-  /* Centrer le conteneur */
 }
 
 body {
@@ -64,7 +45,7 @@ body {
 }
 
 hr {
-  border: 1px solid black;
+  border: 1rem solid black;
 }
 
 .container {
@@ -72,7 +53,7 @@ hr {
   /* Utiliser flexbox pour aligner l'image et les vidéos */
   align-items: center;
   /* Aligner verticalement au centre */
-  max-width: 1000px;
+  max-width: 1000em;
   /* Largeur maximale du conteneur */
   margin: auto;
   /* Centrer le conteneur */

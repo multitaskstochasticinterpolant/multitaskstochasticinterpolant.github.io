@@ -65,6 +65,7 @@
   /* Assez pour 2 lignes */
   margin-top: auto;
   margin-bottom: 0;
+  height: auto;
   line-height: 1;
   font-size: 0.9em;
 

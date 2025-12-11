@@ -66,7 +66,6 @@
   /* Assez pour 2 lignes */
   margin-top: auto;
   margin-bottom: 0;
-  vertical-align: top !important;
   height: auto;
   line-height: 1;
   font-size: 0.9em;
@@ -83,6 +82,8 @@
     width: 45%;
     /* 2 images par ligne sur mobile */
     margin: 5px;
+    border-style: dotted;
+    border-color: black;
   }
 
   .imgContainer img,
@@ -93,6 +94,7 @@
   .imgContainer p {
     font-size: 0.8em;
     min-height: 3.5em;
+    vertical-align: top !important;
     /* Un peu plus sur mobile car le texte wrap plus */
   }
 }

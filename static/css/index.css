@@ -80,8 +80,6 @@
     width: 45%;
     /* 2 images par ligne sur mobile */
     margin: auto;
-    border-style: dotted;
-    border-color: black;
   }
 
   .imgContainer img,

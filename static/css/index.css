@@ -81,7 +81,6 @@
   .imgContainer {
     width: 45%;
     /* 2 images par ligne sur mobile */
-    vertical-align: top !important;
     margin: auto;
     border-style: dotted;
     border-color: black;

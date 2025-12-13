@@ -302,7 +302,8 @@
         </div>
         <div class="columns is-centered">
             <p class="column is-four-fifths" style="text-align: center;">PSNR and SSIM metrics on CelebA and AFHQ-Cat
-                datasets. A single generation was performed on each image.</p>
+                datasets. A single generation was performed on each image. The best result of each category is
+                highlighted in bold font.</p>
         </div>
 
         <div class=" columns is-centered is-max-desktop has-text-centered" style="margin-bottom: 5%">
@@ -414,10 +415,9 @@
         <div class="columns is-centered">
             <div class=" column is-four-fifths">
                 <p class="has-text-justified">
-                    Multiple generations in a row on the
-                    same image without significantly deviating from the original image, see below. The eyes and
-                    mouth
-                    are masked then generated in turn.
+                    The eyes and mouth are masked then generated in turn.
+                    Multiple generations are performed in a row on the
+                    same image. The final result does not deviate significantly from the original image, see below.
                 </p>
                 <div class="container has-text-centered" style="margin-top: 5%; align-items: stretch;">
                     <div class="imgContainer">
@@ -491,14 +491,11 @@
                 <h2 class="title is-4 has-text-centered">Constrained planning</h2>
                 <p>This problem takes root in Reinforcement Learning (RL). Take a maze and two end
                     points.
-                    The
-                    task
-                    is to find the shortest path joining them
+                    The task is to find the shortest path joining them
                     while abiding by the contraints imposed in the environment. With stochastic
                     interpolants, to
                     generate a path, you simply fix the first and last point, and eventually let
-                    diffuse all
-                    other intermediates points.
+                    diffuse all other intermediates points.
                 </p>
                 <div class="container">
                     <video controls autoplay controls muted loop playsinline height="30%" width="30%">

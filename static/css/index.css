@@ -125,6 +125,7 @@ hr {
   /* Utiliser flexbox pour aligner l'image et les vidéos */
   align-items: center;
   /* Aligner verticalement au centre */
+  justify-content: center;
   max-width: 1000em;
   /* Largeur maximale du conteneur */
   margin: auto;

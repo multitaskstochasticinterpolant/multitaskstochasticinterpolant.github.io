@@ -92,7 +92,7 @@
         <div class="container is-max-desktop">
           <div class="columns is-centered">
             <div class="column is-four-fifths has-text-centered">
-              <h1 class="title is-1 publication-title has-text-centered">
+              <h1 class="title is-1 publication-title">
                 Multitask Learning with Stochastic Interpolants
               </h1>
               <div class="is-size-5 publication-authors">
@@ -840,10 +840,19 @@
               border: none;
               margin-left: 40%;
               margin-right: 40%;
-              margin-bottom: -1%;
+              margin-bottom: 5%;
               margin-top: -1%;
             "
           />
+          <p>
+            A major limitation of HMC methods in very high dimension is the low
+            acceptation rate of sampling a new configuration after reaching the
+            stationary distribution. Consequently, generating a whole dataset of
+            $\varphi^4$ configuration is therefore time-consuming. With our
+            method, sampling a configuration close to an other is trivial, you
+            can just mask out a subset of spins, and generate them again
+            immediately, as illustrated below!
+          </p>
 
           <div
             class="container"
@@ -903,7 +912,7 @@
         >
           <b>New operator interpolant</b>
           <br />
-          $$ \begin{align*} I_{\alpha,\beta} = \alpha x_0 + \beta x_1,
+          $$ \begin{align*} I_{\alpha,\beta}(x_0, x_1) = \alpha x_0 + \beta x_1,
           \end{align*} $$ where $x_0 \sim$ noise, $x_1\sim$ data distribution
           and $\alpha,\beta$ are linear operator.
         </p>
@@ -957,6 +966,18 @@
           \overset{d}{=} I_{\alpha_0,\beta_0}\end{align*} $$
         </p>
         <br />
+        In terms of sampling, solving the SDE or ODE is strictly equivalent,
+        that is, $Law(x_t)^{SDE} = Law(x_t)^{ODE}$. The only
+        difference lies in the numerical method employed; an Euler or an
+        Euler-Maruyama scheme respectively.
+
+        <div class="has-text-centered" , style="margin-top: 2rem; border-style: solid; border-color: black; border-width: .1rem; padding-top: 2rem; padding-bottom: 2rem;">
+          <b
+            >The heart of the message is that a single trained model can perform
+            multiple tasks of very different natures, which are uniquely
+            specified by the $(\alpha_t, \beta_t)_{t \in [0, 1]}$-path.
+          </b>
+        </div>
       </div>
     </div>
 
